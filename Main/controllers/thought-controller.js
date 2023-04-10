@@ -23,10 +23,10 @@ const thoughtController = {
   },
 
   // POST a new thought
-  addThought(req, res) {
-    const { userId, thoughtText } = req.body;
+  addThought  (req, res)  {
+    const { userId, thoughtText, username } = req.body;
 
-    Thought.create({ thoughtText })
+    Thought.create({ thoughtText, username })
       .then((newThought) => {
         return User.findOneAndUpdate(
           { _id: userId },
@@ -41,7 +41,7 @@ const thoughtController = {
         res.json({ message: 'Thought created!' });
       })
       .catch((err) => res.status(500).json(err));
-  },
+},
 
   // PUT to update a thought by its _id
   updateThought(req, res) {
@@ -117,3 +117,4 @@ const thoughtController = {
       .catch((err) => res.status(500).json(err));
   }
 }
+module.exports = thoughtController;

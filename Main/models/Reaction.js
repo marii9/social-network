@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
-const assignmentSchema = require('./Thought');
 
-// Schema to create Student model
+// Schema to create Reaction model
 const reactionSchema = new Schema({
   reactionId: {
     type: Schema.Types.ObjectId,
@@ -22,5 +21,7 @@ const reactionSchema = new Schema({
     get: timestamp => dateFormat(timestamp)
   }
 });
-const Reaction = model('Reaction',reactionSchema);
+
+const Reaction = model('Reaction', reactionSchema);
+
 module.exports = Reaction;

@@ -12,7 +12,9 @@ const reactionSchema = new Schema({
   },
   username: {
     type: String,
-    required: true
+    unique: true,
+      required: true
+   
   },
   createdAt: {
     type: Date,
@@ -32,11 +34,14 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: timestamp => dateFormat(timestamp)
+      // get: timestamp => dateFormat(timestamp)
+      get: timestamp => timestamp
     },
     username: {
       type: String,
-      required: true
+      unique: true,
+      required: true,
+    
     },
     reactions: [reactionSchema]
   },

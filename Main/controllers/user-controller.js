@@ -1,13 +1,18 @@
 const { User } = require('../models');
 
-module.exports = {
+
+const userController = {
   // Get all users
   getUsers(req, res) {
     User.find()
-      .populate('thoughts friends')
+      .populate('thoughts')
+      .populate('friends')
       .select('-__v')
       .then((users) => res.json(users))
-      .catch((err) => res.status(500).json(err));
+      .catch((err) =>{
+        console.log(err);
+         res.status(500).json(err)
+      });
   },
 
   // Get a single user by its _id and populated thought and friend data
@@ -52,3 +57,4 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 };
+module.exports = userController;
