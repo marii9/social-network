@@ -83,20 +83,21 @@ const thoughtController = {
 
   // POST to add a reaction to a thought
   addReaction(req, res) {
-    const { reactionBody, username } = req.body;
-
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $push: { reactions: { reactionBody, username } } },
-      { new: true, runValidators: true }
+      { $addToSet: { reactions: req.body } },
+      { runValidators: true, new: true }
     )
-      .then((thought) => {
-        if (!thought) {
-          return res.status(404).json({ message: 'No thought with that ID' });
+      .then((dbThoughtData) => {
+        if (!dbThoughtData) {
+          return res.status(404).json({ message: "No thought with this id!" });
         }
-        res.json(thought);
+        res.json(dbThoughtData);
       })
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
 
   // DELETE to remove a reaction from a thought

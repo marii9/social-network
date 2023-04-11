@@ -1,27 +1,27 @@
 const { Schema, model } = require('mongoose');
-
-const reactionSchema = new Schema({
-  reactionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Schema.Types.ObjectId()
-  },
-  reactionBody: {
-    type: String,
-    required: true,
-    maxlength: 280
-  },
-  username: {
-    type: String,
-    unique: true,
-      required: true
+const reactionSchema = require("./Reaction");
+// const thoughtSchema = new Schema({
+//   reactionId: {
+//     type: Schema.Types.ObjectId,
+//     default: () => new Schema.Types.ObjectId()
+//   },
+//   reactionBody: {
+//     type: String,
+//     required: true,
+//     maxlength: 280
+//   },
+//   username: {
+//     type: String,
+//     unique: true,
+//       required: true
    
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: timestamp => dateFormat(timestamp)
-  }
-});
+//   },
+//   createdAt: {
+//     type: Date,
+//     default: Date.now,
+//     get: timestamp => dateFormat(timestamp)
+//   }
+// });
 
 const thoughtSchema = new Schema(
   {
