@@ -18,7 +18,7 @@ Clone the repository to your local machine.
 
 ## Usage
 
-use a tool like insomnia to  test the API routes and interact with the thoughts and reactions.
+use a tool like insomniaa to  test the API routes and interact with the thoughts and reactions.
 
 ## Contributing
 
